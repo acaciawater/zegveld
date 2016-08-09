@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -117,9 +118,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-UPLOAD_DATAFILES = 'datafiles' 
-UPLOAD_THUMBNAILS = 'thumbnails' 
-UPLOAD_IMAGES = 'images' 
+UPLOAD_DATAFILES = 'datafiles'
+UPLOAD_THUMBNAILS = 'thumbnails'
+UPLOAD_IMAGES = 'images'
 
 # Grapelli admin
 GRAPPELLI_ADMIN_TITLE = 'Beheer van Zegveld Online Datastore'
@@ -128,7 +129,7 @@ GRAPPELLI_ADMIN_TITLE = 'Beheer van Zegveld Online Datastore'
 # Celery stuff
 # BROKER_URL = 'django://'
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
-INSTALLED_APPS += ('kombu.transport.django', 'djcelery',)                  
+INSTALLED_APPS += ('kombu.transport.django', 'djcelery',)
 
 # registration stuff
 ACCOUNT_ACTIVATION_DAYS = 7
