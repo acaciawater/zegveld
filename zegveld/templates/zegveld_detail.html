@@ -21,21 +21,19 @@
 var map;
 function initialize() {
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
+        zoom: 14,
         mapTypeId: google.maps.MapTypeId.{{maptype}}
     });
 	var json = {{content|safe}};
 	var bounds = new google.maps.LatLngBounds();
 	var infowindow = new google.maps.InfoWindow();
 	var marker;
-	var count = 0;
 	json.forEach(function(loc) {
    		marker = new google.maps.Marker({
    			position: new google.maps.LatLng(loc.lat,loc.lon),
 			title: "Locatie "+ loc.name, 
    			map: map
    		});
-   		count += 1;
    		google.maps.event.addListener(marker, 'click', (function(marker) {
 	        return function() {
 	          infowindow.setContent(loc.info);
@@ -44,21 +42,9 @@ function initialize() {
 	      })(marker));
 		bounds.extend(marker.position);
 	});
-	if (count > 1) {
-		map.fitBounds(bounds);
-		//(optional) restore the zoom level after the map is done scaling
-		var listener = google.maps.event.addListener(map, "idle", function () {
-		    map.setZoom(15);
-		    google.maps.event.removeListener(listener);
-		});
-	}
-	else
-		map.panTo(marker.position)
+	map.fitBounds(bounds);
 }
-
-$(function() {
-	initialize();
-	});
+$(function(){initialize();});
 </script>
 {% endlocalize %}
 {% endblock %}
@@ -81,7 +67,7 @@ $(function() {
 <tbody>
 {% for loc in object.projectlocatie_set.all %}
 <tr>
-<td><a href="{% url 'zegveld-dashboard' loc.dashboard|default:loc.name %}">{{loc.name}}</a></td>
+<td><a href="{% url 'dashboard-view' loc.dashboard|default:loc.name %}">{{loc.name}}</a></td>
 <td>{%if loc.webcam%}<a href="{{loc.webcam.image}}"><img src="{{loc.webcam.image}}"/></a>{% endif %}{{loc.description|safe}}</td>
 </tr>
 {% empty %}
