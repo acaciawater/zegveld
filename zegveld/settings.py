@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-os.sys.path.append('/home/theo/texelmeet/acaciadata')
+os.sys.path.append('/home/stephane/git/acaciadata')
 
 
 # Quick-start development settings - unsuitable for production
