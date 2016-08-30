@@ -75,13 +75,16 @@ $(function(){initialize();});
 {% endfor %}
 </tbody>
 </table>
+
+<div class="text-center">
+<a href="{% url 'acacia:all-series-zip' %}" class="btn btn-primary active" data-toggle="tooltip" title="Alle tijdreeksen downloaden als zip bestand" id="download">Downloaden</a>
+</div>
+
 </div>
 </div>
-{% endblock content %}
-{% block content %}
+
 <div id="container"></div>
 <br/>
-<div class="text-center">
-<a href="{% url 'acacia:all-series-zip' chart.id %}" class="btn btn-primary active" data-toggle="tooltip" title="Alle tijdreeksen downloaden als zip bestand" id="download">Downloaden</a>
-</div>
-{% endblock %}
+
+
+{% endblock content %}
